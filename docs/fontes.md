@@ -25,10 +25,11 @@ Data: 2026-10-01. Status: mapeado, a congelar versões antes de qualquer loader.
 
 `docktorch/core/interactions/base.py::InteractionParams`: hydrophobic C–C 4.0, hbond D–A 4.1 + doador ≥100°, salt-bridge 5.5 (centroides), stacking 5.5 + tol 30° + offset 2.0, pication 6.0, min 0.5. Alternativa estrita em `docs/adr/0023`: H···A ≤2.80, doador ≥120°, aceptor ≥90°, halogênea ≤3.5/140°, salina ≤4.0. Halogênea/metal **fora** (sem validação nos inputs — mesma decisão do nosso R6/R7 pós-MVP). Caveat conhecido: carga de HIS por nome de resíduo gera salt-bridges espúrias — carregar estado de protonação do CCD/HET, não do nome.
 
-## Pendências desta etapa
+## Pendências desta etapa — resolvidas em `decisoes/`
 
-1. Licença dos 40.940 padrões SmartChemist (verificar antes de vendorizar).
-2. Eixo farmacofórico: RDKit vs. curadoria (decide `fragment` eixo 2).
-3. Nível de scaffold padrão no MVP: L1, L2 ou L3 (proposta: L1 + L2, L3 como extensão).
-4. `angle` com 4 átomos para diedros (estender vs. novo label).
-5. Versões a congelar: mendeleev, RDKit, CCD (data do dump), PLIP 3.0.1.
+1. Licença SmartChemist → **P01**: BSD-3-Clause, pode vendorizar os 158 SMARTS c/ atribuição.
+2. Eixo farmacofórico → **P02**: `BaseFeatures.fdef` (6/7) + SMARTS próprio de halogênio (R6).
+3. Nível de scaffold do MVP → **P03**: L1 + L2 lado a lado; L3 extensão; sem scaffold p/ polímeros/branched.
+4. `angle` de 4 átomos p/ diedros → **P04**: estender `angle` (`classe`, `posicao=1..4`).
+5. Versões → **P05** + `versoes.md` (tabela travada 2026-10-01).
+6. Atributo-vs-nó → **P05** (tabela; revisão final na modelagem lógica).
